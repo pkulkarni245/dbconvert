@@ -1,0 +1,21 @@
+body {
+    text-align: center;
+    background-color: #000;
+    color: #ccc;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.coming-soon {
+    margin-top: 25%;
+    display: block;
+}
+
+h3 {
+    font-size: 3em;
+    text-transform: uppercase;
+}
+
+small {
+    opacity: 75%;
+    text-transform: uppercase;
+}
