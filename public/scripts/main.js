@@ -1,31 +1,45 @@
 $(document).ready(function () {
     localStorage.clear();
     $("#file-upload").change(function(e){
+        localStorage.clear();
         var files = e.target.files;
-        var fileArray = [];
-        //var file = {};
+        var file = {};
+        var no_files = 0;
+        var fileName = "";
+        var invalidFiles = [];
         for(var i = 0; i < files.length; i++){
-            //files[i].text().then(t => alert(t));
-            /*file = {
+            if(files[i].type!="application/json"){
+                invalidFiles.push(files[i].name);
+                continue;
+            }
+            no_files++;
+            file = {
                 'name'  : files[i].name,
                 'size'  : files[i].size,
-                'type'  : files[i].type,
-            }*/
-            fileArray.push(files[i]);
+                'text'  : "",
+            }
+            files[i].text().then(t => {
+                file["text"] = t;
+                fileName = "file" + no_files;
+                localStorage.setItem(fileName,JSON.stringify(file));
+            });
         }
-        localStorage.setItem('files', JSON.stringify(fileArray));
+        localStorage.setItem("no_files", no_files);
     });
     $("#upload-form").submit(function(evt){
         evt.preventDefault();
-        var subFiles = JSON.parse(localStorage.files);
-        subFiles[0].text().then(t => alert(t));
-        /*for(var i = 0; i < subFiles.length; i++){
-            alert(subFiles[i].name);
-            var reader = new FileReader();
-            reader.readAsText(subFiles[i]);
-            reader.onload = function(e){
-                alert(e.target.result);
-            }
-        }*/
+        var no_files = JSON.parse(localStorage.getItem("no_files"));
+        var fileName = "";
+        var file;
+        var files = [];
+        for(var i = 0; i < no_files; i++){
+            fileName = "file" + i;
+            file = JSON.parse(localStorage.getItem(fileName));
+            console.log(file["name"]);
+            console.log(file["size"]);
+            console.log(file["text"].subtring(0,200));
+        }
+
+        $(this).trigger("reset");
     });
 });
