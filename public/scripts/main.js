@@ -15,8 +15,10 @@ $(document).ready(function () {
             if (files[i].type != "application/json") {
                 log("Rejected " + files[i].name + " - non JSON file");
                 no_rejected++;
-                if(no_rejected == files.length)
+                if(no_rejected == files.length){
+                    localStorage.setItem("dummy",1);
                     $("#upload-form").trigger("reset");
+                }
                 continue;
             }
             file = {
