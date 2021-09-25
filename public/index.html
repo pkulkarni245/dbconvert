@@ -7,12 +7,12 @@
     <title>DB-Convert | Migrate NoSQL to SQL Database</title>
     <link rel="stylesheet" href="style/loader-1.css">
     <link rel="shortcut icon" type="image/png" href="assets/favicon.png" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Firebase -->
     <script defer src="/__/firebase/9.0.2/firebase-app-compat.js"></script>
     <script defer src="/__/firebase/9.0.2/firebase-auth-compat.js"></script>
     <script defer src="/__/firebase/9.0.2/firebase-database-compat.js"></script>
     <script defer src="/__/firebase/9.0.2/firebase-analytics-compat.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script defer src="/__/firebase/init.js?useEmulator=true"></script>
     <link rel="stylesheet" href="style/style.css">
     <noscript>
@@ -26,7 +26,11 @@
             <div class="form-block">
                 <input type="file" id="file-upload" multiple="multiple" accept=".json" />
             </div>
-            <div class="hidden" id="file-list"></div>
+            <div class="form-block">
+                <div id="invalid-file-list">
+                    Only JSON files are permitted.<br>
+                </div>
+            </div>
             <div class="form-block">
                 <input type="reset" />
                 <input type="submit" value="Submit"/>
@@ -36,9 +40,16 @@
     </div>
 
 
-
-
-    <script src="scripts/main.js"></script>
+    <!-- Firebase -->
+    <!-- Main -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <!-- Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="firebaseconfig.js"></script>
+    <script src="auth.js"></script>
+    <script src="main.js"></script>
 </body>
 
 </html>
