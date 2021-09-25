@@ -40,7 +40,6 @@ $(document).ready(function () {
         for (var i = 0; i < no_files; i++) {
             fileName = "file" + i;
             file = localStorage.getItem(fileName);
-            console.log(file.substring(0, 200));
         }
 
         $(this).trigger("reset");
