@@ -1,7 +1,7 @@
 function log(logstr) {
-    var table = document.getElementById("log");
-    var row = table.insertRow();
-    row.classList.add("log-row")
+    var table = document.getElementById("log-body");
+    var row = table.insertRow(0);
+    row.classList.add("log-row");
     var timestampCell = row.insertCell();
     timestampCell.innerHTML = new Date().getTime();
     timestampCell.classList.add("timestamp-cell")

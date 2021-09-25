@@ -1,6 +1,6 @@
 $(document).ready(function () {
-    log("Application Loaded");
     localStorage.clear();
+    log("Loaded site");
     $("#file-upload").change(function (e) {
         localStorage.clear();
         $("#invalid-file-list").html("Only JSON files are permitted.<br>");
@@ -10,14 +10,13 @@ $(document).ready(function () {
         var fileName = "";
         var filenames = [];
         var filesizes = [];
-        var invalidFiles = [];
+        var no_rejected = 0;
         for (var i = 0; i < files.length; i++) {
             if (files[i].type != "application/json") {
-                invalidFiles.push(files[i].name);
-                if (invalidFiles.length == 1) {
-                    $("#invalid-file-list").html($("#invalid-file-list").html() + "As a result, the following files will not be considered:<br>");
-                }
-                $("#invalid-file-list").html($("#invalid-file-list").html() + invalidFiles[i] + "<br>");
+                log("Rejected " + files[i].name + " - non JSON file");
+                no_rejected++;
+                if(no_rejected == files.length)
+                    $("#upload-form").trigger("reset");
                 continue;
             }
             file = {
@@ -27,6 +26,7 @@ $(document).ready(function () {
             }
             filenames[i] = files[i].name;
             filesizes[i] = files[i].size;
+            log("Selected file " + files[i].name +" ("+files[i].size+"B)");
             files[i].text().then(t => {
                 file["text"] = t;
                 fileName = "file" + no_files;
@@ -40,6 +40,9 @@ $(document).ready(function () {
     });
     $("#upload-form").submit(function (evt) {
         evt.preventDefault();
+        if(localStorage.length == 0)
+            return;
+        log("Submitted form");
         var no_files = JSON.parse(localStorage.getItem("no_files"));
         var fileName = "";
         var file;
@@ -57,7 +60,13 @@ $(document).ready(function () {
             console.log(filesizes[i]);
             console.log(files[i].substring(0, 200));
         }
-
-        $(this).trigger("reset");
+    });
+    $("#upload-form").on("reset", function(evt){
+        if(localStorage.length == 0){
+            evt.preventDefault();
+            return;
+        }
+        log("Reset form");
+        localStorage.clear();
     });
 });

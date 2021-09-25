@@ -80,7 +80,7 @@ input:not([type="file"]), ::-webkit-file-upload-button {
       background-color: var(--color-even-row);
   }
 
-  tr:first-child{
+  th{
       background-color: var(--color-primary);
       text-align: center;
       text-transform: capitalize;
