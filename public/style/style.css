@@ -1,21 +1,60 @@
+:root {
+    --color-font: #ccc;
+    --color-primary: #ff5000;
+    --color-primary-shade: #cc4000;
+    --color-secondary: #aa3000;
+    --color-background: #000;
+
+    --border-curve: 0.25rem;
+}
+
+@media (prefers-color-scheme:light) {
+    :root {
+        --color-font: #222;
+        --color-background: #fff;
+    }
+}
+
+* {
+    border-radius: 0.25rem;
+    color: var(--color-font);
+}
+
 body {
     text-align: center;
-    background-color: #000;
-    color: #ccc;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background-color: var(--color-background);
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-.coming-soon {
-    margin-top: 25%;
-    display: block;
+.hidden {
+    visibility: hidden;
 }
 
-h3 {
-    font-size: 3em;
-    text-transform: uppercase;
+.form-container {
+    margin: 5%;
 }
 
-small {
-    opacity: 75%;
-    text-transform: uppercase;
+.form-block {
+    margin: 1%;
 }
+
+input[type="file"] {
+    background-color: var(--color-primary);
+}
+
+input:not([type="file"]), ::-webkit-file-upload-button {
+    color: var(--color-font);
+    border: none;
+    font-size: 1.5em;
+    display: inline-block;
+    padding: 2% 5%;
+    cursor: pointer;
+    background: linear-gradient(to left, var(--color-primary) 50%, var(--color-primary-shade) 50%) right;
+    background-size: 200%;
+    transition: .25s ease-out;    
+    padding: 1em;
+  }
+
+  input:not([type="file"]):hover, ::-webkit-file-upload-button:hover {
+      background-position: left;
+  }
