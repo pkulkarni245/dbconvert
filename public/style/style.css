@@ -1,9 +1,10 @@
 :root {
     --color-font: #ccc;
-    --color-primary: #ff5000;
-    --color-primary-shade: #cc4000;
-    --color-secondary: #aa3000;
     --color-background: #000;
+    --color-primary: #251111;
+    --color-primary-shade: #140000;
+    --color-odd-row: #171010;
+    --color-even-row: #060000;
 
     --border-curve: 0.25rem;
 }
@@ -11,7 +12,11 @@
 @media (prefers-color-scheme:light) {
     :root {
         --color-font: #222;
-        --color-background: #fff;
+        --color-background: #fef7dc;
+        --color-primary: #a19882;
+        --color-primary-shade: #b2a993;
+        --color-even-row: #e6ddc6;
+        --color-odd-row: #c2b8a3;
     }
 }
 
@@ -57,4 +62,34 @@ input:not([type="file"]), ::-webkit-file-upload-button {
 
   input:not([type="file"]):hover, ::-webkit-file-upload-button:hover {
       background-position: left;
+  }
+
+  #log {
+      width: 100%;
+  }
+
+  table {
+      text-align: left;
+  }
+
+  tr:nth-child(odd){
+      background-color: var(--color-odd-row);
+  }
+
+  tr:nth-child(even){
+      background-color: var(--color-even-row);
+  }
+
+  tr:first-child{
+      background-color: var(--color-primary);
+      text-align: center;
+      text-transform: capitalize;
+  }
+
+  .collapse-table {
+      cursor: pointer;
+  }
+
+  .hidden {
+      visibility: collapse;
   }
