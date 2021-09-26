@@ -5,6 +5,7 @@
     --color-primary-shade: #140000;
     --color-odd-row: #171010;
     --color-even-row: #060000;
+    --color-shadow: rgba(0,0,0,0.2);
 
     --border-curve: 0.25rem;
 }
@@ -21,7 +22,7 @@
 }
 
 * {
-    border-radius: 0.25rem;
+    border-radius: var(--border-curve);
     color: var(--color-font);
 }
 
@@ -31,12 +32,47 @@ body {
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: var(--color-background);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-primary-shade);
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-primary);
+  }
+
 .hidden {
     visibility: hidden;
 }
 
-.form-container {
-    margin: 5%;
+.container {
+    padding: 2%;
+    margin: 2%;
+}
+
+.box {
+    box-shadow: 0 4px 8px 0 var(--color-shadow);
+    transition: 0.3s;
+}
+
+.box:hover {
+    box-shadow: 0 8px 16px 0 var(--color-shadow);
+}
+
+.card {
+    display: none;
+    width: 75%;
+}
+
+.active {
+    display: inline-block;
 }
 
 .form-block {
@@ -44,7 +80,7 @@ body {
 }
 
 input[type="file"] {
-    background-color: var(--color-primary);
+    background-color: var(--color-primary-shade);
 }
 
 input:not([type="file"]), ::-webkit-file-upload-button {
@@ -81,9 +117,10 @@ input:not([type="file"]), ::-webkit-file-upload-button {
   }
 
   th{
-      background-color: var(--color-primary);
+      background-color: var(--color-background);
       text-align: center;
       text-transform: capitalize;
+      padding: 0.5em;
   }
 
   .collapse-table {

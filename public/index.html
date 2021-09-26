@@ -21,31 +21,40 @@
 </head>
 
 <body>
-    <div class="form-container">
-        <form id="upload-form">
-            <div class="form-block">
-                <input type="file" id="file-upload" multiple="multiple" accept=".json" />
-            </div>
-            <div class="form-block">
-                <div id="invalid-file-list">
-                    Only JSON files are permitted.<br>
+    <div class="container box" id="head-container">
+        <img src="assets/favicon.png">
+        <h1>DBConvert</h1>
+        <h3><small>Convert NoSQL Databases into SQL Queries</small></h3>
+        <div class="container box card active" id="form-container">
+            <form id="upload-form">
+                <div class="form-block">
+                    <input type="file" id="file-upload" multiple="multiple" accept=".json" class="box"/>
                 </div>
-            </div>
-            <div class="form-block">
-                <input type="reset" />
-                <input type="submit" value="Submit" />
-            </div>
-        </form>
+                <div class="form-block">
+                    <div id="invalid-file-list">
+                        Only JSON files are permitted.<br>
+                    </div>
+                </div>
+                <div class="form-block">
+                    <input type="reset" class="box" />
+                    <input type="submit" value="Submit" class="box" />
+                </div>
+            </form>
+        </div>
+        <div class="container box card" id="table-container">
+            <h2>Verify Results</h2>
+        </div>
     </div>
-    <div id="log-container">
+    <div id="log-container" class="container box">
         <table id="log">
-            <tr class="collapse-table" data-collapse-id="log"><th colspan="1000">Log   &#9660;</th></tr>
+            <tr class="collapse-table" data-collapse-id="log"><th colspan="1000"><h2>Log   &#9660;</h2></th></tr>
             <tbody id="log-body"></tbody>
         </table>
     </div>
     <script src="scripts/logger.js"></script>
     <script src="scripts/main.js"></script>
     <script src="scripts/JSON.js"></script>
+    <script src="scripts/process.js"></script>
     <script src="scripts/designelements.js"></script>
 </body>
 
