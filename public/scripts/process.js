@@ -1,4 +1,11 @@
 function process(filename, filesize, file) {
+    var tablecontainer = document.getElementById("table-container");
+    var table = document.createElement("table");
+    table.classList.add("result-table");
+    var tablebody = document.createElement("tbody");
+    table.appendChild(tablebody);
+    tablecontainer.appendChild(table);
+    tablecontainer.appendChild(document.createElement("hr"));
     log("Processing " + filename + "(" + filesize + "B)");
     try {
         if (IsValidJSON(file));
@@ -10,23 +17,43 @@ function process(filename, filesize, file) {
     }
     var f = JSON.parse(file);
     for(var i in f){
+        var trow = table.insertRow();
         var g = f[i];
-        //console.log(i + "--->\n" + Object.keys(g) + ": " + Object.values(g));
-        console.log(i + "--->")
+        if(i == 0){//insert table header
+            var thead = document.createElement("thead");
+            /*
+            
+
+            ADD TABLE NAME AS FIRST ROW IN THEAD WITH COLSPAN = 100%
+
+            
+            */
+            var headrow = thead.insertRow("tr");
+            var k;
+            for(k in Object.keys(g)){
+                var headcell = headrow.insertCell();
+                headcell.innerHTML = Object.keys(g)[k];
+            }
+            table.appendChild(thead);
+        }
         for(idx in Object.keys(g)){
+            /*
+
+
+            MAKE SURE TO ENFORE VALUE ORDERING, ESPECIALLY IN CASE OF NULLABLE ATTRIBUTES
+
+
+
+            */
             var key = Object.keys(g)[idx];
             var val = Object.values(g)[idx];
             if(val == "[object Object]")
                 val = JSON.stringify(val);
-            console.log(key + ": " + val);
+            tcell = trow.insertCell();
+            tcell.innerHTML = val;
 
         }
-        /* For one extra depth level
-        for(j in g){
-            var h = g[j];
-            console.log("-----" + j + "-----");
-            console.log(Object.keys(h) + ": " + Object.values(h));
-        }/*/
+        
     }
 }
 

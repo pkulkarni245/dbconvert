@@ -38,6 +38,7 @@ body {
 
   ::-webkit-scrollbar {
     width: 0.4rem;
+    height: 0.4rem;
   }
   
   ::-webkit-scrollbar-track {
@@ -145,4 +146,17 @@ input:not([type="file"]), ::-webkit-file-upload-button {
 
   .success {
       color: var(--color-success);
+  }
+
+  #table-container {
+      max-width: 100%;
+      overflow-x: scroll;
+  }
+
+  #table-container::-webkit-scrollbar {
+    display: none;
+  }
+  
+  thead {
+      font-weight: bold;
   }
