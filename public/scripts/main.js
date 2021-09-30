@@ -5,7 +5,6 @@ $(document).ready(function () {
         localStorage.clear();
         $("#invalid-file-list").html("Only JSON files are permitted.<br>");
         var files = e.target.files;
-        var file = {};
         var no_files = 0;
         var fileName = "";
         var filenames = [];
@@ -13,7 +12,7 @@ $(document).ready(function () {
         var no_rejected = 0;
         for (var i = 0; i < files.length; i++) {
             if (files[i].type != "application/json") {
-                log("Rejected " + files[i].name + " - non JSON file");
+                log("Rejected " + files[i].name + " (" + files[i].size + "B) - non JSON file");
                 no_rejected++;
                 if (no_rejected == files.length) {
                     localStorage.setItem("dummy", 1);
@@ -21,16 +20,10 @@ $(document).ready(function () {
                 }
                 continue;
             }
-            file = {
-                'name': files[i].name,
-                'size': files[i].size,
-                'text': "",
-            }
             filenames[i] = files[i].name;
             filesizes[i] = files[i].size;
             log("Selected file " + files[i].name + " (" + files[i].size + "B)");
             files[i].text().then(t => {
-                file["text"] = t;
                 fileName = "file" + no_files;
                 localStorage.setItem(fileName, t);
                 no_files++;

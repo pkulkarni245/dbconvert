@@ -7,6 +7,10 @@
     --color-even-row: #060000;
     --color-shadow: rgba(0,0,0,0.2);
 
+    --color-success: #0a0;
+    --color-error: #a00;
+    --color-process: #0aa;
+    
     --border-curve: 0.25rem;
 }
 
@@ -33,7 +37,7 @@ body {
 }
 
   ::-webkit-scrollbar {
-    width: 5px;
+    width: 0.4rem;
   }
   
   ::-webkit-scrollbar-track {
@@ -129,4 +133,16 @@ input:not([type="file"]), ::-webkit-file-upload-button {
 
   .hidden {
       visibility: collapse;
+  }
+
+  .error {
+      color: var(--color-error);
+  }
+
+  .process {
+      color: var(--color-process);
+  }
+
+  .success {
+      color: var(--color-success);
   }
