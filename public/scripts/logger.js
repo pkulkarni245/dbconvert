@@ -6,5 +6,7 @@ function log(logstr) {
     timestampCell.innerHTML = new Date().getTime();
     timestampCell.classList.add("timestamp-cell")
     var log = row.insertCell();
+    log.classList.add("log-cell");
+    timestampCell.classList.add("log-cell");
     log.innerHTML = logstr;
 }

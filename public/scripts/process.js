@@ -18,26 +18,51 @@ function process(filename, filesize, file) {
         invalidJSONError(filename);
     }
     var f = JSON.parse(file);
+
+    //Obtain List of all Keys in Collection
+    var keylist = obtainKeys(f);
+    //Add Table Header
+    var thead = document.createElement("thead");
+    table.appendChild(thead);
+    var titlerow = thead.insertRow();
+    var tablename = titlerow.insertCell();
+    tablename.colSpan = "100";
+    tablename.classList.add("table-title");
+    var rtablename = filename.split(".json")[0];
+    tablename.innerHTML = rtablename;
+    var headrow = thead.insertRow();
+    for(var k in keylist){
+        var headcell = headrow.insertCell();
+        headcell.innerHTML = keylist[k];
+    }
+
+    //Iteratively obtain all corresponding values
     for(var i in f){
-        var trow = table.insertRow();
+        var trow = tablebody.insertRow();
         var g = f[i];
-        if(i == 0){//insert table header
-            var thead = document.createElement("thead");
-            var titlerow = thead.insertRow();
-            var tablename = titlerow.insertCell();
-            tablename.colSpan = "10000";
-            tablename.classList.add("table-title");
-            var rtablename = filename.split(".json")[0];
-            tablename.innerHTML = rtablename;
-            
-            var headrow = thead.insertRow();
-            var k;
-            for(k in Object.keys(g)){
-                var headcell = headrow.insertCell();
-                headcell.innerHTML = Object.keys(g)[k];
+        var keys = Object.keys(g);
+        var values = Object.values(g);
+        for(isx in keylist){
+            val = "null";
+            for(idx in Object.keys(g)){
+                if(Object.keys(g)[idx] == keylist[isx]){
+                    var val = Object.values(g)[idx];
+                    if(val == "[object Object]")
+                        val = JSON.stringify(val);
+                }
             }
-            table.appendChild(thead);
+            var tcell = trow.insertCell();
+            tcell.innerHTML = val;
+            if(val == "null"){
+                tcell.classList.add("null-value-cell");
+            }
         }
+    }
+
+
+    for(var i in f){
+        var trow = tablebody.insertRow();
+        var g = f[i];
         for(idx in Object.keys(g)){
             var key = Object.keys(g)[idx];
             var val = Object.values(g)[idx];
@@ -49,6 +74,19 @@ function process(filename, filesize, file) {
         }
         
     }
+}
+
+function obtainKeys(f){
+    var keys = [];
+    for(var i in f){
+        var g= f[i];
+        for(idx in Object.keys(g)){
+            var key = Object.keys(g)[idx];
+            if(!keys.includes(key))
+                keys.push(key);
+        }
+    }
+    return keys;
 }
 
 function batch_process(no_files, filenames, filesizes, files) {
