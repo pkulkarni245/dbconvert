@@ -5,7 +5,6 @@ function process(filename, filesize, file) {
     var tablebody = document.createElement("tbody");
     table.appendChild(tablebody);
     tablecontainer.appendChild(table);
-    tablecontainer.appendChild(document.createElement("hr"));
     log("Processing " + filename + "(" + filesize + "B)");
     try {
         if (IsValidJSON(file));
@@ -15,20 +14,36 @@ function process(filename, filesize, file) {
     } catch (error) {
         invalidJSONError(filename);
     }
+    /******************
+     * 
+     * 
+     * 
+     * 
+     * WORD WRAP TO NEXT LINE IN TABLE CELLS!
+     * 
+     * 
+     * CHANGE INVALIDJSONERRORLOG APPROACH TO RETURN LOG STRING INSTEAD
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     */
     var f = JSON.parse(file);
     for(var i in f){
         var trow = table.insertRow();
         var g = f[i];
         if(i == 0){//insert table header
             var thead = document.createElement("thead");
-            /*
+            var titlerow = thead.insertRow();
+            var tablename = titlerow.insertCell();
+            tablename.colSpan = "10000";
+            tablename.classList.add("table-title");
+            var rtablename = filename.split(".json")[0];
+            tablename.innerHTML = rtablename;
             
-
-            ADD TABLE NAME AS FIRST ROW IN THEAD WITH COLSPAN = 100%
-
-            
-            */
-            var headrow = thead.insertRow("tr");
+            var headrow = thead.insertRow();
             var k;
             for(k in Object.keys(g)){
                 var headcell = headrow.insertCell();

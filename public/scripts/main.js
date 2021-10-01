@@ -1,7 +1,10 @@
 $(document).ready(function () {
     localStorage.clear();
     log("Loaded site");
+    var fileselections = 0;
     $("#file-upload").change(function (e) {
+        if(fileselections++ > 0)
+            log("File selection reset by user");
         localStorage.clear();
         $("#invalid-file-list").html("Only JSON files are permitted.<br>");
         var files = e.target.files;
