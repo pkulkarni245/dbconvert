@@ -4,7 +4,7 @@ function process(filename, filesize, file) {
     table.classList.add("result-table");
     var tablebody = document.createElement("tbody");
     table.appendChild(tablebody);
-    tablecontainer.appendChild(table);
+    tablecontainer.insertBefore(table, document.getElementById("verify-button"));
     log("Processing " + filename + "(" + filesize + "B)");
     var invalidJSONLogMessage = "<span class=\"error\">Error: </span>" + filename + " is invalid JSON.";
     try {
@@ -57,22 +57,6 @@ function process(filename, filesize, file) {
                 tcell.classList.add("null-value-cell");
             }
         }
-    }
-
-
-    for(var i in f){
-        var trow = tablebody.insertRow();
-        var g = f[i];
-        for(idx in Object.keys(g)){
-            var key = Object.keys(g)[idx];
-            var val = Object.values(g)[idx];
-            if(val == "[object Object]")
-                val = JSON.stringify(val);
-            tcell = trow.insertCell();
-            tcell.innerHTML = val;
-
-        }
-        
     }
 }
 
