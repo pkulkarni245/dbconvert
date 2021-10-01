@@ -9,9 +9,11 @@ function process(filename, filesize, file) {
     try {
         if (IsValidJSON(file));
         else {
+            log("<span class=\"error\">Error: </span>" + filename + " is invalid JSON.");
             invalidJSONError(filename);
         }
     } catch (error) {
+        log("<span class=\"error\">Error: </span>" + filename + " is invalid JSON.");
         invalidJSONError(filename);
     }
     /******************
@@ -78,7 +80,6 @@ function batch_process(no_files, filenames, filesizes, files) {
 }
 
 function invalidJSONError(filename) {
-    log("<span class=\"error\">Error: </span>" + filename + " is invalid JSON.");
     $("#form-container, #table-container").toggleClass("active");
     $("#upload-form").trigger("reset");
 }
