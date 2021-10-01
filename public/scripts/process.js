@@ -17,22 +17,6 @@ function process(filename, filesize, file) {
         log(invalidJSONLogMessage);
         invalidJSONError(filename);
     }
-    /******************
-     * 
-     * 
-     * 
-     * 
-     * WORD WRAP TO NEXT LINE IN TABLE CELLS!
-     * 
-     * 
-     * CHANGE INVALIDJSONERRORLOG APPROACH TO RETURN LOG STRING INSTEAD
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     */
     var f = JSON.parse(file);
     for(var i in f){
         var trow = table.insertRow();
@@ -55,14 +39,6 @@ function process(filename, filesize, file) {
             table.appendChild(thead);
         }
         for(idx in Object.keys(g)){
-            /*
-
-
-            MAKE SURE TO ENFORE VALUE ORDERING, ESPECIALLY IN CASE OF NULLABLE ATTRIBUTES
-
-
-
-            */
             var key = Object.keys(g)[idx];
             var val = Object.values(g)[idx];
             if(val == "[object Object]")

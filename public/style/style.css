@@ -28,6 +28,7 @@
 * {
     border-radius: var(--border-curve);
     color: var(--color-font);
+    word-wrap: break-word;
 }
 
 body {
@@ -172,4 +173,8 @@ input:not([type="file"]), ::-webkit-file-upload-button {
 
   .table-title {
       font-size: 1.5em;
+  }
+  
+  td {
+      max-width: 10em;
   }
