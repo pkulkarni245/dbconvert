@@ -6,14 +6,15 @@ function process(filename, filesize, file) {
     table.appendChild(tablebody);
     tablecontainer.appendChild(table);
     log("Processing " + filename + "(" + filesize + "B)");
+    var invalidJSONLogMessage = "<span class=\"error\">Error: </span>" + filename + " is invalid JSON.";
     try {
         if (IsValidJSON(file));
         else {
-            log("<span class=\"error\">Error: </span>" + filename + " is invalid JSON.");
+            log(invalidJSONLogMessage);
             invalidJSONError(filename);
         }
     } catch (error) {
-        log("<span class=\"error\">Error: </span>" + filename + " is invalid JSON.");
+        log(invalidJSONLogMessage);
         invalidJSONError(filename);
     }
     /******************

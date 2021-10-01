@@ -166,5 +166,10 @@ input:not([type="file"]), ::-webkit-file-upload-button {
   }
 
   .table-title {
+      background-color: var(--color-background);
+      font-weight: normal;
+  }
+
+  .table-title {
       font-size: 1.5em;
   }
