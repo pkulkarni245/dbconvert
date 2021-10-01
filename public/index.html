@@ -5,13 +5,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>DB-Convert | Migrate NoSQL to SQL Database</title>
+    <link rel="stylesheet" href="style/loader-1.css">
+    <link rel="shortcut icon" type="image/png" href="assets/favicon.png" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Firebase -->
     <script defer src="/__/firebase/9.0.2/firebase-app-compat.js"></script>
     <script defer src="/__/firebase/9.0.2/firebase-auth-compat.js"></script>
     <script defer src="/__/firebase/9.0.2/firebase-database-compat.js"></script>
     <script defer src="/__/firebase/9.0.2/firebase-analytics-compat.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script defer src="/__/firebase/init.js?useEmulator=false"></script>
+    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
     <link rel="stylesheet" href="style/style.css">
     <noscript>
         <meta http-equiv="refresh" content="0;url=noscript.html">
@@ -19,12 +21,43 @@
 </head>
 
 <body>
-    <div class="coming-soon"><h3>Coming Soon</h3><small>Stay tuned for updates</small></div>
-
-
-
-
+    <div class="container box" id="head-container">
+        <img class="logo" src="assets/favicon.png">
+        <h1>DBConvert</h1>
+        <h3><small>Convert NoSQL Databases into SQL Queries</small></h3>
+        <div class="container box card active" id="form-container">
+            <form id="upload-form">
+                <div class="form-block">
+                    <input type="file" id="file-upload" multiple="multiple" accept=".json" class="box"/>
+                </div>
+                <div class="form-block">
+                    <div id="invalid-file-list">
+                        Only JSON files are permitted.<br>
+                    </div>
+                </div>
+                <div class="form-block">
+                    <input type="reset" class="box" />
+                    <input type="submit" value="Submit" class="box" />
+                </div>
+            </form>
+        </div>
+        <div class="container box card" id="table-container">
+            <h2>Verify Results</h2>
+            <input type="button" value="Download Result" id="verify-button">
+        </div>
+    </div>
+    <div id="log-container" class="container box">
+        <table id="log">
+            <tr class="collapse-table" data-collapse-id="log"><th colspan="100%"><h2>Log   &#9660;</h2></th></tr>
+            <tbody id="log-body"></tbody>
+        </table>
+    </div>
+    <script src="scripts/logger.js"></script>
     <script src="scripts/main.js"></script>
+    <script src="scripts/JSON.js"></script>
+    <script src="scripts/process.js"></script>
+    <script src="scripts/result.js"></script>
+    <script src="scripts/designelements.js"></script>
 </body>
 
 </html>
