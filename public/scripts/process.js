@@ -26,7 +26,8 @@ function process(filename, filesize, file) {
     var thead = document.createElement("thead");
     table.appendChild(thead);
     var titlerow = thead.insertRow();
-    var tablename = titlerow.insertCell();
+    var tablename = document.createElement("th");
+    thead.appendChild(tablename);
     tablename.colSpan = "100";
     tablename.classList.add("table-title");
     var rtablename = filename.split(".json")[0];
@@ -37,8 +38,6 @@ function process(filename, filesize, file) {
         headcell.classList.add("colname");
         headrow.appendChild(headcell);
         headcell.innerHTML = keylist[k];
-        /*var headcell = headrow.insertCell();
-        headcell.innerHTML = keylist[k];*/
     }
 
     //Iteratively obtain all corresponding values

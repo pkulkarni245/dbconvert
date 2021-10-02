@@ -8,7 +8,7 @@ $(document).ready(function(){
         else
             $(this).html('<th colspan="1000"><h2>' + collapseElement + '   &#9660;</h2></th>');
     });
-    $("body").on('DOMSubtreeModified', "td", function(evt) {
+    $("body").on('DOMSubtreeModified', "td", function() {
         if(alertedits == true)
             if($(this).html() == "null")
                 $(this).addClass("null-value-cell");

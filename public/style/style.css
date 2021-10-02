@@ -129,7 +129,7 @@ input:not([type="file"]), ::-webkit-file-upload-button {
       background-color: var(--color-even-row);
   }
 
-  th:not(.colname){
+  th:not(.colname, .table-title){
       background-color: var(--color-background);
       text-align: center;
       text-transform: capitalize;
