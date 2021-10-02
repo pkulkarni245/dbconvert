@@ -2,6 +2,7 @@ function process(filename, filesize, file) {
     var tablecontainer = document.getElementById("table-container");
     var table = document.createElement("table");
     table.classList.add("result-table");
+
     table.setAttribute("contenteditable","true");
     var tablebody = document.createElement("tbody");
     table.appendChild(tablebody);
@@ -80,6 +81,7 @@ function obtainKeys(f){
 function batch_process(no_files, filenames, filesizes, files) {
     for (var i = 0; i < files.length; i++)
         process(filenames[i], filesizes[i], files[i]);
+
     alertedits = true;
 }
 
