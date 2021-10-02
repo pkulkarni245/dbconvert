@@ -27,7 +27,7 @@ function process(filename, filesize, file) {
     table.appendChild(thead);
     var titlerow = thead.insertRow();
     var tablename = document.createElement("th");
-    thead.appendChild(tablename);
+    titlerow.appendChild(tablename);
     tablename.colSpan = "100";
     tablename.classList.add("table-title");
     var rtablename = filename.split(".json")[0];

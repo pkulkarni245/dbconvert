@@ -67,7 +67,8 @@ $(document).ready(function () {
     });
     $("#verify-button").click(function(){
         log("Output verification received");
-          download("dbconvert.sql",sqlresult());
+        processresult();
+        //download("dbconvert.sql",sqlresult());
     });
 });
 
