@@ -31,7 +31,7 @@
 * {
     border-radius: var(--border-curve);
     color: var(--color-font);
-    word-wrap: break-word;
+    /*word-wrap: break-word;*/
 }
 
 body {
@@ -129,7 +129,7 @@ input:not([type="file"]), ::-webkit-file-upload-button {
       background-color: var(--color-even-row);
   }
 
-  th{
+  th:not(.colname){
       background-color: var(--color-background);
       text-align: center;
       text-transform: capitalize;
@@ -182,10 +182,16 @@ input:not([type="file"]), ::-webkit-file-upload-button {
       font-size: 1.5em;
   }
   
-  td:not(.log-cell) {
-      max-width: 10em;
-      padding: 1%;
-  }
+  /*td:not(.log-cell) {
+      max-width: 50em;
+      word-wrap: break-word;
+      padding: 0.1%;
+  }*/
+
+  /*td:not(.log-cell) {
+      max-width: fit-content;
+      overflow: scroll;
+  }*/
 
   .null-value-cell {
       color: var(--color-null-value);

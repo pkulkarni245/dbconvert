@@ -2,6 +2,7 @@ function process(filename, filesize, file) {
     var tablecontainer = document.getElementById("table-container");
     var table = document.createElement("table");
     table.classList.add("result-table");
+    table.setAttribute("contenteditable","true");
     var tablebody = document.createElement("tbody");
     table.appendChild(tablebody);
     tablecontainer.insertBefore(table, document.getElementById("verify-button"));
@@ -32,8 +33,12 @@ function process(filename, filesize, file) {
     tablename.innerHTML = rtablename;
     var headrow = thead.insertRow();
     for(var k in keylist){
-        var headcell = headrow.insertCell();
+        var headcell = document.createElement("th");
+        headcell.classList.add("colname");
+        headrow.appendChild(headcell);
         headcell.innerHTML = keylist[k];
+        /*var headcell = headrow.insertCell();
+        headcell.innerHTML = keylist[k];*/
     }
 
     //Iteratively obtain all corresponding values
@@ -76,6 +81,7 @@ function obtainKeys(f){
 function batch_process(no_files, filenames, filesizes, files) {
     for (var i = 0; i < files.length; i++)
         process(filenames[i], filesizes[i], files[i]);
+    alertedits = true;
 }
 
 function invalidJSONError(filename) {
