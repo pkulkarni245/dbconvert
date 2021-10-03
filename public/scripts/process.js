@@ -1,3 +1,4 @@
+var datatypes = ["Text","Int","Float","Date","Datetime","Blob"];
 function process(filename, filesize, file) {
     var tablecontainer = document.getElementById("table-container");
     var table = document.createElement("table");
@@ -33,12 +34,33 @@ function process(filename, filesize, file) {
     tablename.classList.add("table-title");
     var rtablename = filename.split(".json")[0];
     tablename.innerHTML = rtablename;
+    var typerow = thead.insertRow();//for data type selection
     var headrow = thead.insertRow();
     for(var k in keylist){
         var headcell = document.createElement("th");
         headcell.classList.add("colname");
         headrow.appendChild(headcell);
         headcell.innerHTML = keylist[k];
+    }
+    for(var k in keylist){
+        var typecell = document.createElement("th");
+        typerow.appendChild(typecell);
+        typecell.setAttribute("contentEditable", "false");
+        typecell.className = "type-cell";
+        var typeselector = document.createElement("select");
+        typeselector.className = "type-selector";
+        typecell.appendChild(typeselector);
+        for(type of datatypes){
+            var option = document.createElement("option");
+            option.innerHTML = type;
+            typeselector.appendChild(option);
+            option.setAttribute("value", type);
+        }
+
+        typecell.addEventListener("click", function(){
+            /*var selector = this.getElementsByTagName("select")[0];
+            console.log(selector.innerHTML);*/
+        });
     }
 
     //Iteratively obtain all corresponding values

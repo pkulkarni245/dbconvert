@@ -65,10 +65,14 @@ $(document).ready(function () {
         log("Reset form");
         localStorage.clear();
     });
+    $(".type-cell").click(function(){
+        alert("changed column type");
+    });
     $("#verify-button").click(function(){
         log("Output verification received");
         processresult();
         //download("dbconvert.sql",sqlresult());
+        resultstring = [];
     });
 });
 
