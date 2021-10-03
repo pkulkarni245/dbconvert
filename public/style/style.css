@@ -208,5 +208,5 @@ input:not([type="file"]), ::-webkit-file-upload-button {
   }
 
   option {
-      background-color: var(--color-background);
+      background-color: var(--color-even-row);
   }

@@ -70,7 +70,7 @@ $(document).ready(function () {
     });
     $("#verify-button").click(function(){
         log("Output verification received");
-        processresult();
+        processresult(collectdata());
         //download("dbconvert.sql",sqlresult());
         resultstring = [];
     });
