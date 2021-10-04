@@ -73,7 +73,7 @@ $(document).ready(function () {
         log("Output verification received");
         processresult(collectdata());
         download("dbconvert.sql", sqlresult());
-        output = [];
+        output = "";
     });
 });
 
