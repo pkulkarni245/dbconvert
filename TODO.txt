@@ -1,1 +1,0 @@
-put tables in individual divs to enable independent horizontal scrolling in result tables

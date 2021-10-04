@@ -210,3 +210,28 @@ input:not([type="file"]), ::-webkit-file-upload-button {
   option {
       background-color: var(--color-even-row);
   }
+
+  .link {
+      cursor: pointer;
+  }
+
+  #info-panel {
+      background-color: var(--color-background);
+      text-align: center;
+      opacity: 0.75;
+      height: fit-content;
+      width: 30em;
+      z-index: 5;
+      position: fixed;
+      top: 20%;
+      left: calc(50% - 15em);
+      padding: 5%;
+      border: 1px solid var(--color-primary);
+      transform: scale(0,0);
+      transition: transform 0.5s ease-in-out;
+      cursor: pointer;
+  }
+
+  #info-panel > ul {
+      text-align: left;
+  }
