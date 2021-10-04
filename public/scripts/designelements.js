@@ -15,4 +15,10 @@ $(document).ready(function(){
             else
                 $(this).removeClass("null-value-cell");
     });
+    $(".version-info").click(function(){
+        $("#info-panel").css("transform","scale(1,1)");
+    });
+    $("#info-panel").click(function(){
+        $("#info-panel").css("transform","scale(0,0)");
+    });
 });
