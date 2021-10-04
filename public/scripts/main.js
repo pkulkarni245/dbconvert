@@ -1,9 +1,10 @@
 $(document).ready(function () {
+    downloadsamplefiles();
     localStorage.clear();
     log("Loaded site");
     var fileselections = 0;
     $("#file-upload").change(function (e) {
-        if(fileselections++ > 0)
+        if (fileselections++ > 0)
             log("File selection reset by user");
         localStorage.clear();
         $("#invalid-file-list").html("Only JSON files are permitted.<br>");
@@ -65,26 +66,40 @@ $(document).ready(function () {
         log("Reset form");
         localStorage.clear();
     });
-    $(".type-cell").click(function(){
+    $(".type-cell").click(function () {
         alert("changed column type");
     });
-    $("#verify-button").click(function(){
+    $("#verify-button").click(function () {
         log("Output verification received");
         processresult(collectdata());
-        download("dbconvert.sql",sqlresult());
+        download("dbconvert.sql", sqlresult());
         output = [];
     });
 });
 
 function download(filename, text) {
-    var element = document.createElement('a');
-    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-    element.setAttribute('download', filename);
-  
-    element.style.display = 'none';
+    var element = document.createElement("a");
+    element.setAttribute("href", "data:text/plain;charset=utf-8," + encodeURIComponent(text));
+    element.setAttribute("download", filename);
+
+    element.style.display = "none";
     document.body.appendChild(element);
-  
+
     element.click();
-  
+
     document.body.removeChild(element);
-  }
+}
+
+function downloadsamplefiles() {
+    if (window.location.href.includes("?samplefiles")) {
+        const url = "assets/data.json";
+        const a = document.createElement("a");
+        a.style.display = "none";
+        a.href = url;
+        a.download = "data.json";
+        document.body.appendChild(a);
+        a.click();
+        window.URL.revokeObjectURL(url);
+        window.location.replace("/");
+    }
+}
