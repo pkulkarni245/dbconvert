@@ -196,3 +196,17 @@ input:not([type="file"]), ::-webkit-file-upload-button {
   .null-value-cell {
       color: var(--color-null-value);
   }
+
+  select {
+      border: none;
+      background-color: inherit;
+      width: 100%;
+      height: 100%;
+      padding-top: 0.5em;
+      padding-bottom: 0.5em;
+      font-weight: 600;   
+  }
+
+  option {
+      background-color: var(--color-even-row);
+  }

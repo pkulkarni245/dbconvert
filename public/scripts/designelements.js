@@ -15,3 +15,4 @@ $(document).ready(function(){
             else
                 $(this).removeClass("null-value-cell");
     });
+});
