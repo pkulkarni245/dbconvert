@@ -1,3 +1,5 @@
+var texttypes = ["Text"];
+
 function collectdata(){
     var elements = document.getElementById('table-container').children;
     var htmltables = [];
@@ -38,15 +40,46 @@ function processtable(table){
     const name = table.shift()[0];
     const type = table.shift();
     const column = table.shift();
+    
+    //Table Creation
+    var query = "CREATE TABLE " + name + "(";
+    for( idx in type){
+        if(idx != 0)
+            query += ","
+        query += column[idx] + " " + type[idx];
+    }
+    query += ");"
+    addQuery(query);
 
+    //Value Insertion
+    for(row of table){
+        query = "INSERT INTO " + name + " VALUES(";
+        for(idx in type){
+            if(idx != 0)
+                query += ",";
+            var val = row[idx];
+            val = val.replace(/\"/g,"\'");
+            val = val.replace(/\'/g,"\\\"");
+            if(texttypes.includes(type[idx]) && val != "null")
+                val = "\"" + val + "\"";
+            query += val;
+        }
+        /**
+         * REMOVE STRING OPENERS FROM DATA ***DURING COLLECTION***
+         */
+        query += ");";
+        addQuery(query);
+    }
 
 }
 
-
-var resultstring = [];
+//var output = [];
+var output = "";
 function sqlresult(){
-    return resultstring;
+    return output;
 }
-function addresult(str){
-    resultstring.push(str);
+function addQuery(query){
+    console.log(query);
+    //output.push(query);
+    output += query + "\n";
 }
