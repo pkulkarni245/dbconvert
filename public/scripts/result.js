@@ -1,7 +1,7 @@
 var texttypes = ["Text"];
 
 function collectdata(){
-    var elements = document.getElementById('table-container').children;
+    var elements = document.getElementById("table-container").children;
     var htmltables = [];
     var tables = [];
     for(var t = 1; t < elements.length - 1; t++)
@@ -64,22 +64,17 @@ function processtable(table){
                 val = "\"" + val + "\"";
             query += val;
         }
-        /**
-         * REMOVE STRING OPENERS FROM DATA ***DURING COLLECTION***
-         */
         query += ");";
         addQuery(query);
     }
 
 }
 
-//var output = [];
 var output = "";
 function sqlresult(){
     return output;
 }
 function addQuery(query){
     console.log(query);
-    //output.push(query);
     output += query + "\n";
 }

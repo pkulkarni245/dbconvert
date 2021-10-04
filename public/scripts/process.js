@@ -33,14 +33,14 @@ function process(filename, filesize, file) {
     tablename.colSpan = "100";
     tablename.classList.add("table-title");
     var rtablename = filename.split(".json")[0];
-    tablename.innerHTML = rtablename;
+    tablename.innerHTML = rtablename.replace(/\-/g, "\_");
     var typerow = thead.insertRow();//for data type selection
     var headrow = thead.insertRow();
     for(var k in keylist){
         var headcell = document.createElement("th");
         headcell.classList.add("colname");
         headrow.appendChild(headcell);
-        headcell.innerHTML = keylist[k];
+        headcell.innerHTML = keylist[k].replace(/\-/g, "\_");
     }
     for(var k in keylist){
         var typecell = document.createElement("th");
