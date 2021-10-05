@@ -4659,4 +4659,3 @@ function AssertStringArraysEqual(a, b, failures) {
     failures.numberValue = failures.numberValue + 1;
   }
 }
-
