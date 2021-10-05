@@ -1,4 +1,4 @@
-Sample JSON Data (Copy to a .json file to test):
+Sample JSON Data:
 
 
 
